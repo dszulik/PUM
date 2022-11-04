@@ -14,6 +14,9 @@
         android:layout_marginTop="305dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="306dp"
+        android:gravity="center"
+        android:textColor="#363A43"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,5 +31,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="returnMessage"/>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="190dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="52dp"
+        android:textAlignment="center"
+        android:text="KLIKNIJ W TREŚĆ PYTANIA ABY WYSZUKAĆ ODPOWIEDŹ W INTERNECIE"
+        app:layout_constraintBottom_toTopOf="@+id/cheatingTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

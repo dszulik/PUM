@@ -2,17 +2,13 @@ package com.example.physicalquiz
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +38,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState != null)
+        {
+            currentResult = savedInstanceState.getInt("currentResultState");
+            cheats = savedInstanceState.getInt("cheatsState");
+            currentPosition = savedInstanceState.getInt("currentPositionState");
+            correctAnswers = savedInstanceState.getInt("correctAnswersState")
+        }
+
         setQuestion()
 
         questionText.setOnClickListener {
@@ -65,10 +70,7 @@ class MainActivity : AppCompatActivity() {
                 setQuestion()
 
             else{
-                Toast.makeText(
-                    this, "Quiz zakończony, zdobyłeś $currentResult points, $correctAnswers poprawnych odpowiedzi i $cheats oszustw",
-                    Toast.LENGTH_SHORT
-                ).show()
+                questionText.text = "Quiz zakończony\n zdobyte punkty: $currentResult\n poprawne odpowiedzi: $correctAnswers\n ilość oszustw: $cheats"
             }
         }
 
@@ -85,12 +87,10 @@ class MainActivity : AppCompatActivity() {
             if (currentPosition <= questions.size)
                 setQuestion()
             else {
-                Toast.makeText(
-                    this, "Quiz zakończony, zdobyłeś $currentResult points, $correctAnswers poprawnych odpowiedzi i $cheats oszustw",
-                    Toast.LENGTH_SHORT
-                ).show()
+                questionText.text = "Quiz zakończony\n zdobyte punkty: $currentResult\n poprawne odpowiedzi: $correctAnswers\n ilość oszustw: $cheats"
             }
         }
+
     }
 
     private fun setQuestion() {
@@ -101,23 +101,23 @@ class MainActivity : AppCompatActivity() {
 
     fun startCheat(view: View) {
         val message = questionText.text.toString()
-        val id = currentPosition.toString()
         val currentURL = questions[currentPosition-1].url
+        cheats ++
+        currentResult -= 15
 
         val intent = Intent(this, Cheat::class.java).apply {
             putExtra(EXTRA_MESSAGE, message)
-            putExtra(EXTRA_ID, id)
             putExtra(EXTRA_URL, currentURL)
         }
-        secondActivityResultLauncher.launch(intent)
+        startActivity(intent)
     }
 
-    private val secondActivityResultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()){
-            result ->
-        if (result.resultCode == Activity.RESULT_OK)
-            questionText.text = result.data!!.getStringExtra(EXTRA_MESSAGE_REPLY)
-//            currentPosition = result.data!!.getStringExtra(EXTRA_ID_REPLY)
+    override fun onSaveInstanceState(savedInstanceState: Bundle ) {
+        savedInstanceState.putInt("currentResultState", currentResult)
+        savedInstanceState.putInt("cheatsState", cheats)
+        savedInstanceState.putInt("currentPositionState", currentPosition)
+        savedInstanceState.putInt("correctAnswersState", correctAnswers)
+        super.onSaveInstanceState(savedInstanceState)
     }
 
 }
