@@ -1,35 +1,43 @@
 package com.example.studentcrime
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class ListFragment : Fragment() {
 
-    @SuppressLint("MissingInflatedId")
+    private val crimeList = listOf(
+        Crime("First", "dont know yet", "123456", false),
+        Crime("Second", "still dont know", "234567", true),
+        Crime("First", "dont know yet", "345678", false),
+        Crime("Second", "still dont know", "456789", true),
+        Crime("First", "dont know yet", "567890", false),
+        Crime("Second", "still dont know", "678901", true),
+        Crime("First", "dont know yet", "135792", false),
+        Crime("Second", "still dont know", "124578", true),
+        Crime("First", "dont know yet", "975310", false),
+        Crime("Second", "still dont know", "124568", true),
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
-
-        view.findViewById<FloatingActionButton>(R.id.fabA).setOnClickListener {
-            //val action = FragmentADirections.toFragmentB()
-
-            val args = Bundle()
-            args.putInt("key", 5)
-            Navigation.findNavController(view).navigate(R.id.to_fragmentB, args)
-        }
-
-        return view
+        return inflater.inflate(R.layout.fragment_list, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = CrimeListAdapter(crimeList)
+    }
+
 }

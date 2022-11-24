@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/fragmentA">
+    app:startDestination="@id/fragmentList">
 
     <fragment
-        android:id="@+id/fragmentA"
+        android:id="@+id/fragmentList"
         android:name="com.example.studentcrime.ListFragment"
-        android:label="fragment_a"
+        android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
-            android:id="@+id/to_fragmentB"
-            app:destination="@id/fragmentB" />
+            android:id="@+id/to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
         </fragment>
         <fragment
-            android:id="@+id/fragmentB"
+            android:id="@+id/fragmentDetail"
             android:name="com.example.studentcrime.DetailFragment"
-            android:label="fragment_b"
+            android:label="fragment_detail"
             tools:layout="@layout/fragment_detail" >
             <action
-                android:id="@+id/to_fragmentA"
-                app:destination="@id/fragmentA" />
+                android:id="@+id/to_fragmentList"
+                app:destination="@id/fragmentList" />
             </fragment>
             </navigation>

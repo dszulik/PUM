@@ -23,7 +23,7 @@ class DetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.textViewB).text = arguments?.getInt("key").toString()
 
         view.findViewById<FloatingActionButton>(R.id.fabB).setOnClickListener {
-            val action = DetailFragmentDirections.toFragmentA()
+            val action = DetailFragmentDirections.toFragmentList()
             Navigation.findNavController(view).navigate(action)
         }
 
