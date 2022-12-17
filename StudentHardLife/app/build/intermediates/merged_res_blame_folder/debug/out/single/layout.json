@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.example.studenthardlife.app-mergeDebugResources-44:/layout/list_item.xml",
+        "source": "com.example.studenthardlife.app-main-47:/layout/list_item.xml"
+    },
+    {
+        "merged": "com.example.studenthardlife.app-mergeDebugResources-44:/layout/fragment_detail.xml",
+        "source": "com.example.studenthardlife.app-main-47:/layout/fragment_detail.xml"
+    },
+    {
+        "merged": "com.example.studenthardlife.app-mergeDebugResources-44:/layout/activity_main.xml",
+        "source": "com.example.studenthardlife.app-main-47:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.studenthardlife.app-mergeDebugResources-44:/layout/fragment_list.xml",
+        "source": "com.example.studenthardlife.app-main-47:/layout/fragment_list.xml"
+    }
+]
