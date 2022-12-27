@@ -7,21 +7,100 @@
     tools:context=".DetailFragment">
 
     <TextView
-        android:id="@+id/textview_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_detail"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/text_view_detail_title_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="TYTUŁ"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_title_label"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_deadline_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_title"
+        android:text="DEADLINE"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_deadline"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_deadline_label"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_content_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_deadline"
+        android:text="CO TRZEBA ZROBIĆ?"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_content_label"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_isDone_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_content"
+        android:text="CZY ZROBIONA?"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_view_detail_isDone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_isDone_label" />
+
 
     <Button
-        android:id="@+id/button_detail"
+        android:id="@+id/button_detail_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/previous"
+        android:layout_marginStart="85dp"
+        android:layout_marginEnd="236dp"
+        android:text="Edytuj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_isDone" />
+
+    <Button
+        android:id="@+id/button_detail_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="85dp"
+        android:text="Usuń"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_detail_edit"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_detail_isDone" />
+
+    <Button
+        android:id="@+id/button_detail_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="157dp"
+        android:text="Powrót"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_detail_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

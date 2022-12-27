@@ -1,43 +1,37 @@
 package com.example.studenthardlife
 
-import android.app.Dialog
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.studenthardlife.databinding.ListItemBinding
 
-class TaskAdapter(private val dbHandler: DBHandler) :
+class TaskAdapter(private val dbHandler: DBHandler, private val context: Context) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-
-        private val title : TextView = itemView.findViewById(R.id.title)
+    inner class ViewHolder(private val itemBinding: ListItemBinding) :
+        RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(item: Task) {
-            title.text = item.title
-//            isDone.text = item.isDone.toString()
+            itemBinding.textViewTitle.text = item.title
+            itemBinding.isDoneImage.visibility = if (item.isDone == "tak") View.VISIBLE else View.INVISIBLE
 
-            itemView.setOnClickListener {
-//                dbHandler.getTasks()
-//                val args = Bundle()
-//                Navigation.findNavController(itemView).navigate(R.id.action_ListFragment_to_DetailFragment, args)
-                val action = ListFragmentDirections.toDetailFragment()
+            itemBinding.textViewTitle.setOnClickListener {
+                val action = ListFragmentDirections.actionListFragmentToDetailFragment(itemId = item.id.toString())
                 Navigation.findNavController(itemView).navigate(action)
             }
         }
-        }
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-        return ViewHolder(itemView)
+        val itemBinding = ListItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

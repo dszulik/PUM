@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Title"
+            android:text="TYTUŁ"
             android:textSize="18sp" />
 
         <EditText
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="Enter Title" />
+            android:hint="Wprowadź tytuł" />
 
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Deadline"
+            android:text="DEADLINE"
             android:textSize="18sp" />
 
         <EditText
@@ -54,7 +54,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="Enter Deadline"
+            android:hint="Wprowadź deadline"
             android:importantForAutofill="no"
             android:inputType="text" />
 
@@ -73,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Content"
+            android:text="TREŚĆ"
             android:textSize="18sp" />
 
         <EditText
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="Enter Content"
+            android:hint="Wprowadź treść"
             android:importantForAutofill="no"
             android:inputType="text" />
 
@@ -100,7 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Is Done?"
+            android:text="ZROBIONA?"
             android:textSize="18sp" />
 
         <EditText
@@ -108,9 +108,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.75"
-            android:hint="Is Done? (0 or 1)"
+            android:hint="(tak/nie)"
             android:importantForAutofill="no"
-            android:inputType="number" />
+            android:inputType="text" />
 
     </LinearLayout>
 
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/id_done_layout"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dataBaseRecyclerView"
+        android:id="@+id/dataBase_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

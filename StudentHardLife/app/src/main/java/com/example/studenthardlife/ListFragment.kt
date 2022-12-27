@@ -6,17 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-//import com.example.studenthardlife.databinding.FragmentTaskOverviewBinding
-import com.example.studenthardlife.databinding.ActivityMainBinding
 import com.example.studenthardlife.databinding.FragmentListBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class ListFragment : Fragment() {
-
-//    private var _binding: FragmentListBinding? = null
-//    private lateinit var dbHandler: DBHandler
 
     private lateinit var dbHandler: DBHandler
     private val binding by lazy { FragmentListBinding.inflate(layoutInflater) }
@@ -31,8 +23,8 @@ class ListFragment : Fragment() {
         }
 
         binding.dataBaseRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = TaskAdapter(dbHandler)
+            layoutManager = LinearLayoutManager(this.context)
+            adapter = TaskAdapter(dbHandler, this.context)
         }
 
         binding.addButton.setOnClickListener {
@@ -41,8 +33,8 @@ class ListFragment : Fragment() {
             val content = binding.editTextContent.text.toString()
             val isDone = binding.editTextIsdone.text.toString()
 
-            if (title.isNotEmpty() && deadline.isNotEmpty()){
-                dbHandler.addTask(Task(title, deadline,content, isDone.toBoolean() ))
+            if (title.isNotEmpty() && deadline.isNotEmpty() && content.isNotEmpty() && isDone.isNotEmpty() && isDone == "tak" || isDone == "nie"){
+                dbHandler.addTask(Task(title, deadline, content, isDone))
                 binding.editTextTitle.text.clear()
                 binding.editTextDeadline.text.clear()
                 binding.editTextContent.text.clear()
@@ -57,5 +49,5 @@ class ListFragment : Fragment() {
     override fun onDestroy() {
         dbHandler.close()
         super.onDestroy()
-        }
     }
+}

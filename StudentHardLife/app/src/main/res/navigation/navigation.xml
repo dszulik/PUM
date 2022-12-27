@@ -10,18 +10,22 @@
         android:name="com.example.studenthardlife.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list">
-
-    <action
-        android:id="@+id/to_detailFragment"
-        app:destination="@id/to_detailFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_DetailFragment"
+            app:destination="@id/detailFragment" >
+            <argument
+                android:name="itemId"
+                app:argType="string" />
+        </action>
     </fragment>
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.studenthardlife.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
-            android:id="@+id/to_listFragment"
+            android:id="@+id/action_DetailFragment_to_ListFragment"
             app:destination="@id/listFragment" />
     </fragment>
 </navigation>

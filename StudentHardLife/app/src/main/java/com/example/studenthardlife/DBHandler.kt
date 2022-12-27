@@ -17,7 +17,7 @@ class DBHandler(context: Context?) : SQLiteOpenHelper(
         private const val COLUMN_TITLE = "title"
         private const val COLUMN_DEADLINE = "deadline"
         private const val COLUMN_CONTENT = "content"
-        private const val COLUMN_ISDONE = "isdone"
+        private const val COLUMN_ISDONE = "isDone"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -27,7 +27,7 @@ class DBHandler(context: Context?) : SQLiteOpenHelper(
                     "$COLUMN_TITLE TEXT," +
                     "$COLUMN_DEADLINE TEXT," +
                     "$COLUMN_CONTENT TEXT," +
-                    "$COLUMN_ISDONE BOOLEAN)"
+                    "$COLUMN_ISDONE TEXT)"
         db?.execSQL(CREATE_TASKS_TABLE)
     }
 
@@ -59,7 +59,7 @@ class DBHandler(context: Context?) : SQLiteOpenHelper(
         db.close()
     }
 
-    fun updateTask (id: Int, title: String, deadline: String, content: String, isDone: Boolean){
+    fun updateTask (id: Int, title: String, deadline: String, content: String, isDone: String){
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(COLUMN_TITLE, title)
@@ -89,7 +89,7 @@ class DBHandler(context: Context?) : SQLiteOpenHelper(
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3),
-                    cursor.getInt(4) > 0))
+                    cursor.getString(4)))
             } while (cursor.moveToNext())
         }
 
