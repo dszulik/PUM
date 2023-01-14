@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/capitalsFragment"
+        android:icon="@drawable/countries"
+        android:title="CAPITALS" />
+
+    <item
+        android:id="@id/flagsFragment"
+        android:icon="@drawable/countries"
+        android:title="FLAGS" />
+</menu>

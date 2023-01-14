@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/capitalsFragment">
+
+    <fragment
+        android:id="@+id/capitalsFragment"
+        android:name="com.example.restcountriesapp.ui.fragments.capitals.CapitalsFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_capitals" />
+    <fragment
+        android:id="@+id/flagsFragment"
+        android:name="com.example.restcountriesapp.ui.fragments.flags.FlagsFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_flags" />
+
+</navigation>
