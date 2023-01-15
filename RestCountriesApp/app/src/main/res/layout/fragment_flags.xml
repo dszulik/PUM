@@ -5,13 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.flags.FlagsFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/flagsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="top|center"
-        android:text="FLAGS"
-        android:textSize="67sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:id="@+id/flagsProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"/>
 </FrameLayout>

@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Transformations.map
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.restcountriesapp.R
 import com.example.restcountriesapp.adapters.capitals.CapitalsAdapter
 import com.example.restcountriesapp.adapters.capitals.CapitalsComparator
 import com.example.restcountriesapp.databinding.FragmentCapitalsBinding
@@ -19,6 +19,7 @@ class CapitalsFragment : Fragment() {
 
     private lateinit var binding: FragmentCapitalsBinding
     private val capitalsViewModel: CapitalsViewModel by viewModels()
+    private val TAG = "CapitalsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +44,12 @@ class CapitalsFragment : Fragment() {
         capitalsViewModel.capitals.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
-                    response.data?.let  { res ->
-                        Log.d("RESPONSE_OK", res.toString())
-                        capitalsAdapter.submitList(res.map { Country(it.name, it.capital) })}
+                    hideProgressBar()
+                    response.data?.let { res -> capitalsAdapter.submitList(res.map { Country(it.name, it.capital, it.flag) })}
                 }
                 is Resource.Error -> {
-                    response.message?.let { Log.e("RESPONSE_ERROR", "Error occurred: $it") }
+                    hideProgressBar()
+                    response.message?.let { Log.e(TAG, "Error occurred: $it") }
                 }
                 is Resource.Loading -> showProgressBar()
             }
